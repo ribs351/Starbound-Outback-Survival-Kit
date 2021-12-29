@@ -188,7 +188,9 @@
             "fire3": ["/sfx/melee/swing_shortsword.ogg"],
             "fire4": ["/sfx/melee/swing_shortsword.ogg"],
             "fire5": ["/sfx/melee/swing_shortsword.ogg"],
-            "unsheathe": ["/sfx/outback/draw_melee.ogg"]
+            "unsheathe": ["/sfx/outback/draw_melee.ogg"],
+			"fireTrailDashCharge" : [ "/sfx/melee/charge_traildash3.ogg" ],
+			"fireTrailDashFire" : [ "/sfx/melee/travelingslash_fire3.ogg" ]
         }
     },
     "radioMessagesOnPickup": ["pickupmachete"],
@@ -539,6 +541,7 @@
         "projectileParameters": {
             "processing": "?multiply=0000",
             "speed": 0,
+			"power": 1,
             "timeToLive": 0.01,
             "actionOnReap": [{
                     "action": "loop",
