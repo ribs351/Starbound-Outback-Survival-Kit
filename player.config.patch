@@ -6,5 +6,7 @@
 	{"op" : "add" , "path" : "/defaultBlueprints/tier1/-" , "value" : { "item" : "outback_huntersknife" }},
 	{"op" : "add" , "path" : "/defaultBlueprints/tier1/-" , "value" : { "item" : "outback_machete" }},
 	{"op" : "add" , "path" : "/defaultBlueprints/tier1/-" , "value" : { "item" : "outback_spear" }},
-	{"op" : "add" , "path" : "/defaultBlueprints/tier1/-" , "value" : { "item" : "outback_huntersrifle" }}	
+	{"op" : "add" , "path" : "/defaultBlueprints/tier1/-" , "value" : { "item" : "outback_huntersrifle" }},
+	{"op" : "add" , "path" : "/defaultBlueprints/tier1/-" , "value" : { "item" : "outback_vb" }},
+	{"op" : "add" , "path" : "/defaultBlueprints/tier1/-" , "value" : { "item" : "outback_fosters" }}
 ]

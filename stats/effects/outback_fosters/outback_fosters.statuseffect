@@ -1,0 +1,16 @@
+{
+  "name" : "outback_fosters",
+  "blockingStat" : "outback_fostersImmunity",
+
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "outback_fosters.lua"
+  ],
+
+  "animationConfig" : "outback_fosters.animation",
+
+  "label" : "Ewww! Who drinks this stuff?",
+  "icon" : "/stats/effects/outback_fosters/fosters.png"
+}

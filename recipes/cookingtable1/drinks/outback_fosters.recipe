@@ -1,0 +1,12 @@
+{
+    "input": [{
+            "item": "money",
+            "count": 20
+        }
+    ],
+    "output": {
+        "item": "outback_fosters",
+        "count": 1
+    },
+    "groups": ["craftingfood", "drinks"]
+}

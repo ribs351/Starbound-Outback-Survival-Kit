@@ -1,0 +1,18 @@
+{
+  "name" : "outback_vb",
+  "effectConfig" : {
+    "regenBonusAmount" : 0,
+    "emissionRate" : 25
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "outback_vb.lua"
+  ],
+  "scriptDelta" : 0,
+
+  "animationConfig" : "outback_vb.animation",
+
+  "label" : "Victoria Bitter!",
+  "icon" : "/stats/effects/outback_vb/vb.png"
+}

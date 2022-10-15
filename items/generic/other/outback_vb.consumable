@@ -1,0 +1,24 @@
+{
+    "itemName": "outback_vb",
+    "price": 600,
+    "rarity": "Uncommon",
+    "category": "drink",
+    "inventoryIcon": "vb.png",
+    "description": "Get that into ya, ya c*nt!",
+    "shortdescription": "VB",
+    "maxStack": 20,
+    "foodValue": 20,
+    "effects": [[{
+                "effect": "outback_crikey",
+                "duration": 30
+            }, {
+                "effect": "outback_vb",
+                "duration": 30
+            }
+        ]],
+    "blockingEffects": [
+        "outback_vb"
+    ],
+    "emote": "",
+    "emitters": ["drinking"]
+}
