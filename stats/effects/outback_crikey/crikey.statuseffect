@@ -2,7 +2,10 @@
 	"name" : "outback_crikey",
 	"defaultDuration" : 0.2,
 	"effectConfig" : {
-		"maxPowerMultiplier" : 3
+		"maxPowerMultiplier" : 3,
+		"minPowerMultiplier": 0.75,
+		"maxSpeedModifier": 1.75,
+		"minSpeedModifier": 0.85
 	},
 	"scripts" : ["crikey.lua"],
 
