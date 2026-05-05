@@ -9,7 +9,10 @@ function ThrowSpear:init()
 	self.projectileCfg = root.projectileConfig(self.projectileType)
 	self.projectileGrav = root.projectileGravityMultiplier(self.projectileType)
 	
-	self.weapon:setStance(self.stances.idle)
+	if not self.weapon.currentAbility then
+        self.weapon:setStance(self.stances.idle)
+    end
+	
 	self.weapon.onLeaveAbility = function()
 		self.weapon:setStance(self.stances.idle)
 	end

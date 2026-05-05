@@ -192,11 +192,12 @@
             "throw": {
                 "burstCount": 10,
                 "transformationGroups": ["weapon"],
-                "offsetRegion": [0, 0, 0, 0],
+                "offsetRegion": [0, 0, 0, 0], 
                 "particles": []
             }
         },
         "sounds": {
+            "unsheathe": ["/sfx/outback/draw_knife.ogg"],
             "fire": ["/sfx/melee/swing_spear.ogg"],
             "fire2": ["/sfx/melee/swing_broadsword.ogg"],
             "fire3": ["/sfx/melee/swing_spear.ogg"],
@@ -247,25 +248,26 @@
             }
         ],
         "stances": {
-            //not working due to the alt, will figure something out later
             "unsheathe": {
-                "duration": 0.3,
+                "playSounds": ["unsheathe"],
+                "duration": 0.4,
                 "armRotation": -90,
-                "weaponRotation": 0,
-                "armAngularVelocity": 300,
-                "weaponAngularVelocity": 234,
+                "weaponRotation": -10,
+                "armAngularVelocity": 0,
+                "weaponAngularVelocity": 900,
                 "allowRotate": false,
                 "allowFlip": true,
                 "twoHanded": false
             },
             //the idle here is also defunct since it takes after the alt
             "idle": {
-                "armRotation": 0,
-                "weaponRotation": 70,
-                "allowRotate": false,
-                "allowFlip": true,
+                "armRotation": -90,
+                "weaponRotation": -10,
+                "weaponOffset": [0, 0.7],
                 "aimAngle": 0,
-                "flipx": false
+                "twoHanded": false,
+                "allowRotate": false,
+                "allowFlip": true
             },
             "windup1": {
                 "duration": 0.2,
