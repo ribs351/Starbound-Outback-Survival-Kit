@@ -1,3 +1,8 @@
+-- NOTE: This alt ability manages its own idle stance via onLeaveAbility.
+-- If adapting this script for other weapons, ensure the stances table includes
+-- an "idle" stance, otherwise the weapon will break.
+-- The primary ability's idle stance is NOT used here by design.
+
 ThrowSpear = WeaponAbility:new()
 
 function ThrowSpear:init()
