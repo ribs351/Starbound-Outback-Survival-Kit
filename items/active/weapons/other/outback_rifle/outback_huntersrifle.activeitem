@@ -13,7 +13,7 @@
     "twoHanded": true,
 
 
-    "animation": "/items/active/weapons/other/outback_rifle/outback_huntersrifle.animation",
+    "animation": "outback_huntersrifle.animation",
     "animationParts": {
         "middle": "outback_huntersrifle.png",
         "muzzleFlash": "/items/active/weapons/ranged/muzzleflash.png"
