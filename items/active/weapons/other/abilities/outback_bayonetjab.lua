@@ -6,9 +6,11 @@ BayonetJab = WeaponAbility:new()
 function BayonetJab:init()
   self.cooldownTimer = self.cooldownTime
 
+  self.chargedDirectives = config.getParameter("chargedDirectives", "")
+
   -- Hold phase config
   self.maxHoldTime = config.getParameter("maxHoldTime", 1.5)
-  self.readyLerpTime = config.getParameter("readyLerpTime", 0.15)
+  self.readyLerpTime = config.getParameter("readyLerpTime", 0.5)
 
   -- Energy config
   self.minEnergyUsage = config.getParameter("minEnergyUsage", 10)
@@ -22,16 +24,14 @@ function BayonetJab:init()
   self.minFireDuration = config.getParameter("minFireDuration", 0.2)
   self.maxFireDuration = config.getParameter("maxFireDuration", 1.5)
   self.lungeSpeed = config.getParameter("lungeSpeed", 60)
-  self.chargeDirectives = config.getParameter("chargeDirectives", "")
 
   self.chargeReady = false
 
   self:reset()
-
-  self.weapon:setStance(self.stances.idle)
-  self.weapon.onLeaveAbility = function()
-    self.weapon:setStance(self.stances.idle)
-  end
+	
+	self.weapon.onLeaveAbility = function()
+		self.weapon:setStance(self.stances.idle)
+	end
 end
 
 function BayonetJab:update(dt, fireMode, shiftHeld)
@@ -56,13 +56,17 @@ function BayonetJab:charge()
   self.weapon:updateAim()
 
   while lerpTimer < self.readyLerpTime do
-    lerpTimer = math.min(self.readyLerpTime, lerpTimer + self.dt)
-    local t = lerpTimer / self.readyLerpTime
+  lerpTimer = math.min(self.readyLerpTime, lerpTimer + self.dt)
+  local t = lerpTimer / self.readyLerpTime
 
-    self.weapon.relativeArmRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.armRotation, readyStance.armRotation))
-    self.weapon.relativeWeaponRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.weaponRotation, readyStance.weaponRotation))
-    coroutine.yield()
-  end
+  self.weapon.relativeArmRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.armRotation, readyStance.armRotation))
+  self.weapon.relativeWeaponRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.weaponRotation, readyStance.weaponRotation))
+  self.weapon.weaponOffset = {
+    util.interpolateSigmoid(t, idleStance.weaponOffset[1], readyStance.weaponOffset[1]),
+    util.interpolateSigmoid(t, idleStance.weaponOffset[2], readyStance.weaponOffset[2])
+  }
+  coroutine.yield()
+end
 
   self.weapon:setStance(readyStance)
 
@@ -87,7 +91,7 @@ function BayonetJab:charge()
 
     if holdTimer >= self.maxHoldTime and not self.chargeReady then
         self.chargeReady = true
-        animator.setGlobalTag("directives", self.chargeDirectives)
+        animator.setGlobalTag("directives", self.chargedDirectives)
         animator.playSound("charged")
     end
     coroutine.yield()
@@ -109,22 +113,21 @@ function BayonetJab:swing(holdTimer)
   scaledDamageConfig.baseDamage = damage
 
   -- Full charge triggers lunge
-  if holdTimer >= self.maxHoldTime then
-  local lungeVector = vec2.rotate({self.lungeSpeed, 0}, self.weapon.aimAngle)
-  lungeVector[1] = lungeVector[1] * mcontroller.facingDirection()
-  -- Add upward boost if on ground so the player clears the surface before lunging
-  if mcontroller.onGround() then
-    lungeVector[2] = lungeVector[2] + config.getParameter("lungeUpwardBoost", 10)
+   if holdTimer >= self.maxHoldTime then
+    local lungeVector = vec2.rotate({self.lungeSpeed, 0}, self.weapon.aimAngle)
+    lungeVector[1] = lungeVector[1] * mcontroller.facingDirection()
+    if mcontroller.onGround() then
+      lungeVector[2] = lungeVector[2] + config.getParameter("lungeUpwardBoost", 10)
+    end
+    mcontroller.setVelocity(lungeVector)
+    status.setPersistentEffects("bayonetLunge", {{stat = "activeMovementAbilities", amount = 1}})
   end
-  mcontroller.setVelocity(lungeVector)
-  status.setPersistentEffects("bayonetLunge", {{stat = "activeMovementAbilities", amount = 1}})
-end
 
   self.weapon:setStance(self.stances.swing)
   self.weapon:updateAim()
 
   animator.setAnimationState("swoosh", "fire")
-  animator.playSound("flurry")
+  animator.playSound("jab")
 
   util.wait(self.stances.swing.duration, function()
     local damageArea = partDamageArea("swoosh")

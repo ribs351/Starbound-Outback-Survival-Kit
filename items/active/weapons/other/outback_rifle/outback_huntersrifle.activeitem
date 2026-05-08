@@ -11,8 +11,9 @@
     "category": "^green;Bushmen",
     "itemTags": ["weapon", "ranged", "rifle","upgradeableWeapon"],
     "twoHanded": true,
+    
 
-    "animation": "/items/active/weapons/ranged/gun.animation",
+    "animation": "/items/active/weapons/other/outback_rifle/outback_huntersrifle.animation",
     "animationParts": {
         "butt": "",
         "middle": "outback_huntersrifle.png",
@@ -22,248 +23,10 @@
         "muzzleFlash": "/items/active/weapons/ranged/muzzleflash.png"
     },
     "animationCustom": {
-        "animatedParts": {
-            "stateTypes": {
-                "firing": {
-                    "default": "off",
-                    "states": {
-                        "off": {},
-                        "fire": {
-                            "frames": 2,
-                            "cycle": 0.07,
-                            "mode": "transition",
-                            "transition": "off"
-                        },
-                        "reload": {
-                            "frames": 2,
-                            "cycle": 0.15,
-                            "mode": "transition",
-                            "transition": "off"
-                        }
-                    }
-                },
-                "swoosh": {
-                    "default": "idle",
-                    "states": {
-                        "idle": {},
-                        "fire": {
-                            "frames": 3,
-                            "cycle": 0.08,
-                            "mode": "transition",
-                            "transition": "idle"
-                        }
-                    }
-                }
-            },
-
-            "parts": {
-                "butt": {
-                    "properties": {
-                        "centered": true,
-                        "image": "<partImage><paletteSwaps>",
-                        "offset": [0, 0], // x offset is set dynamically
-                        "transformationGroups": ["weapon"]
-                    }
-                },
-                "middle": {
-                    "properties": {
-                        "centered": true,
-                        "image": "<partImage>:cock.1",
-                        "offset": [0, 0], // x offset is set dynamically
-                        "transformationGroups": ["weapon"]
-                    },
-                    "partStates": {
-                        "firing": {
-                            "reload": {
-                                "properties": {
-                                    "image": "<partImage>:cock.<frame>"
-                                }
-                            }
-                        }
-                    }
-                },
-                "barrel": {
-                    "properties": {
-                        "centered": true,
-                        "image": "<partImage><paletteSwaps>",
-                        "offset": [0, 0], // x offset is set dynamically
-                        "transformationGroups": ["weapon"]
-                    }
-                },
-                "muzzleFlash": {
-                    "properties": {
-                        "zLevel": -1,
-                        "centered": true,
-                        "offset": [0.75, 0],
-                        "fullbright": true,
-                        "transformationGroups": ["muzzle"]
-                    },
-
-                    "partStates": {
-                        "firing": {
-                            "fire": {
-                                "properties": {
-                                    "image": "<partImage>:<variant>.<frame>"
-                                }
-                            }
-                        }
-                    }
-                },
-                "blade": {
-                    "properties": {
-                        "zLevel": 1,
-                        "centered": true,
-                        "image": "<partImage><paletteSwaps>",
-                        "offset": [0.0, 0.0],
-                        "transformationGroups": ["weapon"],
-                        "damageArea": [[0, -0.5], [-0.75, 1.0], [-0.75, 2.75], [0, 4.25], [0.75, 2.75], [0.75, 1.0]]
-                    }
-                },
-                "handle": {
-                    "properties": {
-                        "zLevel": 0,
-                        "centered": true,
-                        "image": "<partImage><paletteSwaps>",
-                        "offset": [0.0, 0.0],
-                        "transformationGroups": ["weapon"]
-                    }
-                },
-                "swoosh": {
-                    "properties": {
-                        "zLevel": -1,
-                        "centered": true,
-                        "offset": [0.0, -0.3],
-                        "transformationGroups": ["muzzle"]
-                    },
-
-                    "partStates": {
-                        "swoosh": {
-                            "idle": {
-                                "properties": {
-                                    "image": ""
-                                }
-                            },
-                            "fire": {
-                                "properties": {
-                                    "image": "/items/active/weapons/melee/spear/swoosh/<elementalType>swoosh.png:<frame>",
-                                    "damageArea": [[-3.5, 0], [-1, 1], [1, 1], [4, 0], [1, -1], [-1, -1]]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-
-        "transformationGroups": {
-            "weapon": {},
-            "swoosh": {}
-        },
-
-        "particleEmitters": {
-            "muzzleFlash": {
-                "transformationGroups": ["muzzle"],
-                "offsetRegion": [0, 0, 0, 0],
-                "particles": [{
-                        "particle": "firestormflame"
-                    }, {
-                        "particle": "firestormflame3"
-                    }, {
-                        "particle": "firestormflame2"
-                    }, {
-                        "particle": "rocketbarrelpuff"
-                    }, {
-                        "particle": "rocketbarrelpuff"
-                    }, {
-                        "particle": "rocketbarrelpuff"
-                    }
-                ]
-            },
-            "physicalswoosh": {
-                "active": false,
-                "transformationGroups": ["swoosh"],
-                "emissionRate": 60,
-                "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-                "particles": []
-            },
-            "fireswoosh": {
-                "active": false,
-                "transformationGroups": ["swoosh"],
-                "emissionRate": 60,
-                "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-                "particles": [{
-                        "particle": "fireswoosh1"
-                    }, {
-                        "particle": "fireswoosh2"
-                    }, {
-                        "particle": "fireswoosh3"
-                    }, {
-                        "particle": "fireswoosh1"
-                    }, {
-                        "particle": "fireswoosh2"
-                    }, {
-                        "particle": "fireswoosh3"
-                    }
-                ]
-            },
-            "electricswoosh": {
-                "active": false,
-                "transformationGroups": ["swoosh"],
-                "emissionRate": 60,
-                "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-                "particles": [{
-                        "particle": "electricswoosh1"
-                    }, {
-                        "particle": "electricswoosh2"
-                    }, {
-                        "particle": "electricswoosh2"
-                    }
-                ]
-            },
-            "iceswoosh": {
-                "active": false,
-                "transformationGroups": ["swoosh"],
-                "emissionRate": 60,
-                "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-                "particles": [{
-                        "particle": "iceswoosh1"
-                    }, {
-                        "particle": "iceswoosh2"
-                    }, {
-                        "particle": "iceswoosh3"
-                    }, {
-                        "particle": "iceswoosh1"
-                    }, {
-                        "particle": "iceswoosh2"
-                    }, {
-                        "particle": "iceswoosh3"
-                    }
-                ]
-            },
-            "poisonswoosh": {
-                "active": false,
-                "transformationGroups": ["swoosh"],
-                "emissionRate": 60,
-                "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-                "particles": [{
-                        "particle": "poisonswoosh1"
-                    }, {
-                        "particle": "poisonswoosh2"
-                    }, {
-                        "particle": "fireswoosh2"
-                    }, {
-                        "particle": "poisonswoosh1"
-                    }, {
-                        "particle": "poisonswoosh2"
-                    }, {
-                        "particle": "fireswoosh2"
-                    }
-                ]
-            }
-        },
         "sounds": {
             "fire": ["/sfx/outback/gun/rifle1.ogg", "/sfx/outback/gun/rifle2.ogg", "/sfx/outback/gun/rifle3.ogg", "/sfx/outback/gun/rifle4.ogg"],
             "lever": ["/sfx/outback/lever.ogg"],
+            "jab" : [ "/sfx/melee/spear_flurry.ogg" ],
             "altWindup": ["/sfx/outback/draw.ogg"],
             "charged": [ "/sfx/melee/sword_parry.ogg" ]
         }
@@ -356,7 +119,7 @@
         "class": "BayonetJab",
 
         "maxHoldTime": 1.5,
-        "readyLerpTime": 0.15,
+        "readyLerpTime": 0.5,
         "minEnergyUsage": 10,
         "maxEnergyUsage": 40,
         "minDamage": 3,
@@ -365,7 +128,8 @@
         "maxFireDuration": 1.5,
         "lungeSpeed": 60,
         "lungeUpwardBoost": 10,
-        "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
+
+        "chargedDirectives" : "?fade=CCCCFFFF=0.25",
 
         "cooldownTime": 0.5,
 
@@ -391,10 +155,11 @@
             },
             "ready": {
                 "armRotation": -90,
-                "weaponRotation": 90,
+                "weaponRotation": 110,
+                "frontArmFrame": "run.1",
+                "backArmFrame": "swim.3",
                 "twoHanded": true,
-                "weaponOffset": [0, 0.2],
-
+                "weaponOffset": [1, 0],
                 "allowRotate": true,
                 "allowFlip": true
             },
