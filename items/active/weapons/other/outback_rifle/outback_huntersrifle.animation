@@ -1,13 +1,13 @@
 {
-    "globalTagDefaults" : {
-    "directives" : ""
-  },
+    "globalTagDefaults": {
+        "directives": ""
+    },
     "animatedParts": {
         "stateTypes": {
             "firing": {
                 "default": "off",
                 "states": {
-                    "off": {},
+                    "off": { },
                     "fire": {
                         "frames": 2,
                         "cycle": 0.07,
@@ -25,7 +25,7 @@
             "swoosh": {
                 "default": "idle",
                 "states": {
-                    "idle": {},
+                    "idle": { },
                     "fire": {
                         "frames": 3,
                         "cycle": 0.08,
@@ -40,15 +40,15 @@
             "middle": {
                 "properties": {
                     "centered": true,
-                    "image": "<partImage>:cock.1",
+                    "image": "<partImage>:cock.1<directives>",
                     "offset": [0, 0], // x offset is set dynamically
-                    "transformationGroups": ["weapon"]
+                    "transformationGroups": [ "weapon" ]
                 },
                 "partStates": {
                     "firing": {
                         "reload": {
                             "properties": {
-                                "image": "<partImage>:cock.<frame>"
+                                "image": "<partImage>:cock.<frame><directives>"
                             }
                         }
                     }
@@ -58,16 +58,16 @@
                 "properties": {
                     "zLevel": -1,
                     "centered": true,
-                    "offset": [0.75, 0],
+                    "offset": [ 0.75, 0 ],
                     "fullbright": true,
-                    "transformationGroups": ["muzzle"]
+                    "transformationGroups": [ "muzzle" ]
                 },
 
                 "partStates": {
                     "firing": {
                         "fire": {
                             "properties": {
-                                "image": "<partImage>:<variant>.<frame>"
+                                "image": "<partImage>:<variant>.<frame><directives>"
                             }
                         }
                     }
@@ -77,8 +77,8 @@
                 "properties": {
                     "zLevel": -1,
                     "centered": true,
-                    "offset": [0.0, -0.3],
-                    "transformationGroups": ["muzzle"]
+                    "offset": [ 0.0, -0.3 ],
+                    "transformationGroups": [ "muzzle" ]
                 },
 
                 "partStates": {
@@ -86,7 +86,7 @@
                         "fire": {
                             "properties": {
                                 "image": "/items/active/weapons/melee/spear/swoosh/<elementalType>swoosh.png:<frame>",
-                                "damageArea": [[-3.5, 0], [-1, 1], [1, 1], [4, 0], [1, -1], [-1, -1]]
+                                "damageArea": [ [ -3.5, 0 ], [ -1, 1 ], [ 1, 1 ], [ 4, 0 ], [ 1, -1 ], [ -1, -1 ] ]
                             }
                         }
                     }
@@ -96,9 +96,9 @@
     },
 
     "transformationGroups": {
-        "weapon": {},
-        "muzzle" : {},
-        "swoosh": {}
+        "weapon": { },
+        "muzzle": { },
+        "swoosh": { }
     },
 
     "particleEmitters": {
@@ -120,13 +120,13 @@
             "particles": [ ]
         }
     },
-    "lights" : {
-    "muzzleFlash" : {
-      "active" : false,
-      "position" : [0, 0],
-      "color" : [90, 90, 0]
-    }
-  },
+    "lights": {
+        "muzzleFlash": {
+            "active": false,
+            "position": [ 0, 0 ],
+            "color": [ 90, 90, 0 ]
+        }
+    },
     "sounds": {
         "fire": [ "/sfx/outback/gun/rifle1.ogg", "/sfx/outback/gun/rifle2.ogg", "/sfx/outback/gun/rifle3.ogg", "/sfx/outback/gun/rifle4.ogg" ],
         "lever": [ "/sfx/outback/lever.ogg" ],

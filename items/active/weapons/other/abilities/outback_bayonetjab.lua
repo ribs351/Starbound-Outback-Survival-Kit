@@ -1,37 +1,13 @@
 require "/scripts/util.lua"
-require "/items/active/weapons/weapon.lua"
+require "/scripts/vec2.lua"
 
 BayonetJab = WeaponAbility:new()
 
 function BayonetJab:init()
   self.cooldownTimer = self.cooldownTime
-
-  self.chargedDirectives = config.getParameter("chargedDirectives", "")
-
-  -- Hold phase config
-  self.maxHoldTime = config.getParameter("maxHoldTime", 1.5)
-  self.readyLerpTime = config.getParameter("readyLerpTime", 0.5)
-
-  -- Energy config
-  self.minEnergyUsage = config.getParameter("minEnergyUsage", 10)
-  self.maxEnergyUsage = config.getParameter("maxEnergyUsage", 40)
-
-  -- Damage config
-  self.minDamage = config.getParameter("minDamage", 5)
-  self.maxDamage = config.getParameter("maxDamage", 20)
-
-  -- Fire/lunge config
-  self.minFireDuration = config.getParameter("minFireDuration", 0.2)
-  self.maxFireDuration = config.getParameter("maxFireDuration", 1.5)
-  self.lungeSpeed = config.getParameter("lungeSpeed", 60)
-
   self.chargeReady = false
 
   self:reset()
-	
-	self.weapon.onLeaveAbility = function()
-		self.weapon:setStance(self.stances.idle)
-	end
 end
 
 function BayonetJab:update(dt, fireMode, shiftHeld)
@@ -40,10 +16,9 @@ function BayonetJab:update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
 
   if self.weapon.currentAbility == nil
-    and self.cooldownTimer == 0
-    and not status.resourceLocked("energy")
-    and self.fireMode == "alt" then
-
+      and self.cooldownTimer == 0
+      and self.fireMode == "alt"
+      and not status.resourceLocked("energy") then
     self:setState(self.charge)
   end
 end
@@ -56,17 +31,17 @@ function BayonetJab:charge()
   self.weapon:updateAim()
 
   while lerpTimer < self.readyLerpTime do
-  lerpTimer = math.min(self.readyLerpTime, lerpTimer + self.dt)
-  local t = lerpTimer / self.readyLerpTime
+    lerpTimer = math.min(self.readyLerpTime, lerpTimer + self.dt)
+    local t = lerpTimer / self.readyLerpTime
 
-  self.weapon.relativeArmRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.armRotation, readyStance.armRotation))
-  self.weapon.relativeWeaponRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.weaponRotation, readyStance.weaponRotation))
-  self.weapon.weaponOffset = {
-    util.interpolateSigmoid(t, idleStance.weaponOffset[1], readyStance.weaponOffset[1]),
-    util.interpolateSigmoid(t, idleStance.weaponOffset[2], readyStance.weaponOffset[2])
-  }
-  coroutine.yield()
-end
+    self.weapon.relativeArmRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.armRotation, readyStance.armRotation))
+    self.weapon.relativeWeaponRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.weaponRotation, readyStance.weaponRotation))
+    self.weapon.weaponOffset = {
+      util.interpolateSigmoid(t, idleStance.weaponOffset[1], readyStance.weaponOffset[1]),
+      util.interpolateSigmoid(t, idleStance.weaponOffset[2], readyStance.weaponOffset[2])
+    }
+    coroutine.yield()
+  end
 
   self.weapon:setStance(readyStance)
 
@@ -78,21 +53,19 @@ end
 
     holdTimer = math.min(self.maxHoldTime, holdTimer + self.dt)
 
+    status.setResourcePercentage("energyRegenBlock", 1)
     local chargeRatio = holdTimer / self.maxHoldTime
     if holdTimer < self.maxHoldTime then
-        local energyPerSecond = self.minEnergyUsage + (self.maxEnergyUsage - self.minEnergyUsage) * chargeRatio
-        status.setResourcePercentage("energyRegenBlock", 1)
-        if not status.overConsumeResource("energy", energyPerSecond * self.dt) then
-            forceFire = true
-    end
-    else
-        status.setResourcePercentage("energyRegenBlock", 1)
+      local energyPerSecond = self.minEnergyUsage + (self.maxEnergyUsage - self.minEnergyUsage) * chargeRatio
+      if not status.overConsumeResource("energy", energyPerSecond * self.dt) then
+        forceFire = true
+      end
     end
 
     if holdTimer >= self.maxHoldTime and not self.chargeReady then
-        self.chargeReady = true
-        animator.setGlobalTag("directives", self.chargedDirectives)
-        animator.playSound("charged")
+      self.chargeReady = true
+      animator.setGlobalTag("directives", self.chargedDirectives)
+      animator.playSound("charged")
     end
     coroutine.yield()
   end
@@ -113,19 +86,20 @@ function BayonetJab:swing(holdTimer)
   scaledDamageConfig.baseDamage = damage
 
   -- Full charge triggers lunge
-   if holdTimer >= self.maxHoldTime then
+  if holdTimer >= self.maxHoldTime then
     local lungeVector = vec2.rotate({self.lungeSpeed, 0}, self.weapon.aimAngle)
     lungeVector[1] = lungeVector[1] * mcontroller.facingDirection()
     if mcontroller.onGround() then
       lungeVector[2] = lungeVector[2] + config.getParameter("lungeUpwardBoost", 10)
     end
     mcontroller.setVelocity(lungeVector)
-    status.setPersistentEffects("bayonetLunge", {{stat = "activeMovementAbilities", amount = 1}})
+    status.setPersistentEffects("outback_bayonetLunge", {{stat = "activeMovementAbilities", amount = 1}})
   end
 
   self.weapon:setStance(self.stances.swing)
   self.weapon:updateAim()
 
+  animator.burstParticleEmitter((self.elementalType or self.weapon.elementalType) .. "swoosh")
   animator.setAnimationState("swoosh", "fire")
   animator.playSound("jab")
 
@@ -134,14 +108,14 @@ function BayonetJab:swing(holdTimer)
     self.weapon:setDamage(scaledDamageConfig, damageArea)
   end)
 
-  status.clearPersistentEffects("bayonetLunge")
+  self:reset()
 
   self.weapon:setStance(self.stances.idle)
   self.cooldownTimer = self.cooldownTime
 end
 
 function BayonetJab:reset()
-  status.clearPersistentEffects("bayonetLunge")
+  status.clearPersistentEffects("outback_bayonetLunge")
 end
 
 function BayonetJab:uninit()
