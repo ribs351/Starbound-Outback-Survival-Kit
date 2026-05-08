@@ -1,0 +1,6 @@
+{
+	"name" : "outback_bottleback",
+	"defaultDuration" : 0.2,
+	"effectConfig" : {},
+	"scripts" : ["outback_bottleback.lua"]
+}

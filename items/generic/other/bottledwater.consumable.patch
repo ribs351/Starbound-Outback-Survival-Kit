@@ -1,0 +1,10 @@
+[
+    {
+        "op": "add",
+        "path": "/effects/0/1",
+        "value": {
+            "effect": "outback_bottleback",
+            "duration": 1
+        }
+    }
+]
