@@ -1,24 +1,22 @@
 {
-// on picking up items
-
-  "pickupknife" : {
-    "type" : "generic",
-	"unique": true,
-    "text" : "Sure, it's probably the ^green;universe's oldest tool^reset;, but it has that title for a reason. If you ever ask a survivalist what three things to take into any survival type situation, they'll list off \"^darkgreen;Knife^reset;, ^orange;fire or way to make fire^reset;, and ^cornflowerblue;clean water^reset;\" in that order."
+  "outback_pickupknife": {
+    "type": "generic",
+    "unique": true,
+    "text": "Sure, it's probably the ^green;universe's oldest tool^reset;, but it has that title for a reason. If you ever ask a survivalist what three things to take into any survival type situation, they'll list off \"^darkgreen;Knife^reset;, ^orange;fire or way to make fire^reset;, and ^cornflowerblue;clean water^reset;\" in that order."
   },
-  "pickupmachete" : {
-    "type" : "generic",
-	"unique": true,
-    "text" : " Like the axe to Europeans and North Americans, ^darkgreen;machete^reset; has self-defense use as well as mundane use. Frequently used to cut through rain forest undergrowth, removing small branches and plants, for agricultural purposes (e.g. cutting sugar cane) any many other use."
+  "outback_pickupmachete": {
+    "type": "generic",
+    "unique": true,
+    "text": " Like the axe to Europeans and North Americans, ^darkgreen;machete^reset; has self-defense use as well as mundane use. Frequently used to cut through rain forest undergrowth, removing small branches and plants, for agricultural purposes (e.g. cutting sugar cane) any many other use."
   },
-  "pickupspear" : {
-    "type" : "generic",
-	"unique": true,
-    "text" : "^darkgreen;The Spear^reset;. Basically the next step of weapons development after inventing the knife (or sharpened rock), and has been in use for tens of thousands of years by almost every single culture that has ever existed."
+  "outback_pickupspear": {
+    "type": "generic",
+    "unique": true,
+    "text": "^darkgreen;The Spear^reset;. Basically the next step of weapons development after inventing the knife (or sharpened rock), and has been in use for tens of thousands of years by almost every single culture that has ever existed."
   },
-  "pickuphuntingrifle" : {
-    "type" : "generic",
-	"unique": true,
-    "text" : "While outdated and almost ugly, if this is all someone can afford for protection, even the haters will grudgingly cede that at least ^darkgreen;this rifle^reset; can be counted on to go \"bang\" when they're supposed to."
+  "outback_pickuphuntingrifle": {
+    "type": "generic",
+    "unique": true,
+    "text": "While outdated and almost ugly, if this is all someone can afford for protection, even the haters will grudgingly cede that at least ^darkgreen;this rifle^reset; can be counted on to go \"bang\" when they're supposed to."
   }
 }

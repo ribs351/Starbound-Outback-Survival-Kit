@@ -193,7 +193,7 @@
 			"fireTrailDashFire" : [ "/sfx/melee/travelingslash_fire3.ogg" ]
         }
     },
-    "radioMessagesOnPickup": ["pickupmachete"],
+    "radioMessagesOnPickup": ["outback_pickupmachete"],
     "scripts": ["/items/active/weapons/melee/meleeweapon.lua", "/items/active/weapons/other/outback_crikey.lua"],
 
     "elementalType": "fire",

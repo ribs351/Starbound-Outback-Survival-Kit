@@ -264,7 +264,7 @@
         }
     },
 
-    "radioMessagesOnPickup" : [ "pickupspear" ],
+    "radioMessagesOnPickup" : [ "outback_pickupspear" ],
     "scripts": ["/items/active/weapons/melee/meleeweapon.lua", "/items/active/weapons/other/outback_crikey.lua"],
 
     "elementalType": "physical",

@@ -18,7 +18,7 @@
         "middle": "outback_huntersrifle.png",
         "muzzleFlash": "/items/active/weapons/ranged/muzzleflash.png"
     },
-    "radioMessagesOnPickup": [ "pickuphuntingrifle" ],
+    "radioMessagesOnPickup": [ "outback_pickuphuntingrifle" ],
 
     "baseOffset": [ 0.9, 0.0 ],
     "muzzleOffset": [ 1.7, 0.6 ],
