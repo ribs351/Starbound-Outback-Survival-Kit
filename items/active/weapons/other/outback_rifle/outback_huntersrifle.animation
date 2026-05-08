@@ -37,14 +37,6 @@
         },
 
         "parts": {
-            "butt": {
-                "properties": {
-                    "centered": true,
-                    "image": "<partImage><paletteSwaps>",
-                    "offset": [0, 0], // x offset is set dynamically
-                    "transformationGroups": ["weapon"]
-                }
-            },
             "middle": {
                 "properties": {
                     "centered": true,
@@ -60,14 +52,6 @@
                             }
                         }
                     }
-                }
-            },
-            "barrel": {
-                "properties": {
-                    "centered": true,
-                    "image": "<partImage><paletteSwaps>",
-                    "offset": [0, 0], // x offset is set dynamically
-                    "transformationGroups": ["weapon"]
                 }
             },
             "muzzleFlash": {
@@ -89,25 +73,6 @@
                     }
                 }
             },
-            "blade": {
-                "properties": {
-                    "zLevel": 1,
-                    "centered": true,
-                    "image": "<partImage><paletteSwaps>",
-                    "offset": [0.0, 0.0],
-                    "transformationGroups": ["weapon"],
-                    "damageArea": [[0, -0.5], [-0.75, 1.0], [-0.75, 2.75], [0, 4.25], [0.75, 2.75], [0.75, 1.0]]
-                }
-            },
-            "handle": {
-                "properties": {
-                    "zLevel": 0,
-                    "centered": true,
-                    "image": "<partImage><paletteSwaps>",
-                    "offset": [0.0, 0.0],
-                    "transformationGroups": ["weapon"]
-                }
-            },
             "swoosh": {
                 "properties": {
                     "zLevel": -1,
@@ -118,11 +83,6 @@
 
                 "partStates": {
                     "swoosh": {
-                        "idle": {
-                            "properties": {
-                                "image": ""
-                            }
-                        },
                         "fire": {
                             "properties": {
                                 "image": "/items/active/weapons/melee/spear/swoosh/<elementalType>swoosh.png:<frame>",
@@ -143,103 +103,21 @@
 
     "particleEmitters": {
         "muzzleFlash": {
-            "transformationGroups": ["muzzle"],
-            "offsetRegion": [0, 0, 0, 0],
-            "particles": [{
-                    "particle": "firestormflame"
-                }, {
-                    "particle": "firestormflame3"
-                }, {
-                    "particle": "firestormflame2"
-                }, {
-                    "particle": "rocketbarrelpuff"
-                }, {
-                    "particle": "rocketbarrelpuff"
-                }, {
-                    "particle": "rocketbarrelpuff"
-                }
+            "transformationGroups": [ "muzzle" ],
+            "offsetRegion": [ 0, 0, 0, 0 ],
+            "particles": [
+                { "particle": "firestormflame" },
+                { "particle": "firestormflame2" },
+                { "particle": "firestormflame3" },
+                { "particle": "rocketbarrelpuff", "count": 3 }
             ]
         },
         "physicalswoosh": {
             "active": false,
-            "transformationGroups": ["swoosh"],
+            "transformationGroups": [ "swoosh" ],
             "emissionRate": 60,
-            "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-            "particles": []
-        },
-        "fireswoosh": {
-            "active": false,
-            "transformationGroups": ["swoosh"],
-            "emissionRate": 60,
-            "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-            "particles": [{
-                    "particle": "fireswoosh1"
-                }, {
-                    "particle": "fireswoosh2"
-                }, {
-                    "particle": "fireswoosh3"
-                }, {
-                    "particle": "fireswoosh1"
-                }, {
-                    "particle": "fireswoosh2"
-                }, {
-                    "particle": "fireswoosh3"
-                }
-            ]
-        },
-        "electricswoosh": {
-            "active": false,
-            "transformationGroups": ["swoosh"],
-            "emissionRate": 60,
-            "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-            "particles": [{
-                    "particle": "electricswoosh1"
-                }, {
-                    "particle": "electricswoosh2"
-                }, {
-                    "particle": "electricswoosh2"
-                }
-            ]
-        },
-        "iceswoosh": {
-            "active": false,
-            "transformationGroups": ["swoosh"],
-            "emissionRate": 60,
-            "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-            "particles": [{
-                    "particle": "iceswoosh1"
-                }, {
-                    "particle": "iceswoosh2"
-                }, {
-                    "particle": "iceswoosh3"
-                }, {
-                    "particle": "iceswoosh1"
-                }, {
-                    "particle": "iceswoosh2"
-                }, {
-                    "particle": "iceswoosh3"
-                }
-            ]
-        },
-        "poisonswoosh": {
-            "active": false,
-            "transformationGroups": ["swoosh"],
-            "emissionRate": 60,
-            "offsetRegion": [3.5, -1.0, 7.5, 1.0],
-            "particles": [{
-                    "particle": "poisonswoosh1"
-                }, {
-                    "particle": "poisonswoosh2"
-                }, {
-                    "particle": "fireswoosh2"
-                }, {
-                    "particle": "poisonswoosh1"
-                }, {
-                    "particle": "poisonswoosh2"
-                }, {
-                    "particle": "fireswoosh2"
-                }
-            ]
+            "offsetRegion": [ 3.5, -1.0, 7.5, 1.0 ],
+            "particles": [ ]
         }
     },
     "lights" : {
@@ -249,7 +127,11 @@
       "color" : [90, 90, 0]
     }
   },
-  "sounds" : {
-    "fire" : [ ]
-  }
+    "sounds": {
+        "fire": [ "/sfx/outback/gun/rifle1.ogg", "/sfx/outback/gun/rifle2.ogg", "/sfx/outback/gun/rifle3.ogg", "/sfx/outback/gun/rifle4.ogg" ],
+        "lever": [ "/sfx/outback/lever.ogg" ],
+        "jab": [ "/sfx/melee/spear_flurry.ogg" ],
+        "altWindup": [ "/sfx/outback/draw.ogg" ],
+        "charged": [ "/sfx/melee/sword_parry.ogg" ]
+    }
 }

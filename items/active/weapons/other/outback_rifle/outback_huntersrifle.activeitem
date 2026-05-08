@@ -15,21 +15,8 @@
 
     "animation": "/items/active/weapons/other/outback_rifle/outback_huntersrifle.animation",
     "animationParts": {
-        "butt": "",
         "middle": "outback_huntersrifle.png",
-        "barrel": "",
-        "blade": "",
-        "handle": "",
         "muzzleFlash": "/items/active/weapons/ranged/muzzleflash.png"
-    },
-    "animationCustom": {
-        "sounds": {
-            "fire": [ "/sfx/outback/gun/rifle1.ogg", "/sfx/outback/gun/rifle2.ogg", "/sfx/outback/gun/rifle3.ogg", "/sfx/outback/gun/rifle4.ogg" ],
-            "lever": [ "/sfx/outback/lever.ogg" ],
-            "jab": [ "/sfx/melee/spear_flurry.ogg" ],
-            "altWindup": [ "/sfx/outback/draw.ogg" ],
-            "charged": [ "/sfx/melee/sword_parry.ogg" ]
-        }
     },
     "radioMessagesOnPickup": [ "pickuphuntingrifle" ],
 
