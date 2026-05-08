@@ -9,9 +9,9 @@
     "level": 5,
     "tooltipKind": "base",
     "category": "^green;Bushmen",
-    "itemTags": ["weapon", "ranged", "rifle","upgradeableWeapon"],
+    "itemTags": [ "weapon", "ranged", "rifle", "upgradeableWeapon" ],
     "twoHanded": true,
-    
+
 
     "animation": "/items/active/weapons/other/outback_rifle/outback_huntersrifle.animation",
     "animationParts": {
@@ -24,29 +24,29 @@
     },
     "animationCustom": {
         "sounds": {
-            "fire": ["/sfx/outback/gun/rifle1.ogg", "/sfx/outback/gun/rifle2.ogg", "/sfx/outback/gun/rifle3.ogg", "/sfx/outback/gun/rifle4.ogg"],
-            "lever": ["/sfx/outback/lever.ogg"],
-            "jab" : [ "/sfx/melee/spear_flurry.ogg" ],
-            "altWindup": ["/sfx/outback/draw.ogg"],
+            "fire": [ "/sfx/outback/gun/rifle1.ogg", "/sfx/outback/gun/rifle2.ogg", "/sfx/outback/gun/rifle3.ogg", "/sfx/outback/gun/rifle4.ogg" ],
+            "lever": [ "/sfx/outback/lever.ogg" ],
+            "jab": [ "/sfx/melee/spear_flurry.ogg" ],
+            "altWindup": [ "/sfx/outback/draw.ogg" ],
             "charged": [ "/sfx/melee/sword_parry.ogg" ]
         }
     },
-	"radioMessagesOnPickup" : [ "pickuphuntingrifle" ],
+    "radioMessagesOnPickup": [ "pickuphuntingrifle" ],
 
-    "baseOffset": [0.9, 0.0],
-    "muzzleOffset": [1.7, 0.6],
+    "baseOffset": [ 0.9, 0.0 ],
+    "muzzleOffset": [ 1.7, 0.6 ],
 
-    "scripts": ["/items/active/weapons/ranged/gun.lua", "/items/active/weapons/other/outback_crikey.lua"],
+    "scripts": [ "/items/active/weapons/ranged/gun.lua", "/items/active/weapons/other/outback_crikey.lua" ],
 
     "elementalType": "physical",
 
     "primaryAbility": {
-        "scripts": ["/items/active/weapons/other/abilities/outback_gunfire.lua"],
+        "scripts": [ "/items/active/weapons/other/abilities/outback_gunfire.lua" ],
         "class": "GunFire",
 
         "fireTime": 1.0,
-		"fireTimeLerp": 0.5,
-		"fireTimeMax": 0.5,
+        "fireTimeLerp": 0.5,
+        "fireTimeMax": 0.5,
         "baseDps": 5,
         "energyUsage": 10,
         "inaccuracy": 0.008,
@@ -57,7 +57,7 @@
         "projectileType": "outback_standardhuntingbullet",
         "projectileParameters": {
             "knockback": 20,
-			"speed": 500
+            "speed": 500
         },
         "stances": {
             "draw": {
@@ -67,7 +67,7 @@
                 "armAngularVelocity": -450,
                 "weaponAngularVelocity": -450,
 
-                "playSounds": ["altWindup"],
+                "playSounds": [ "altWindup" ],
 
                 "allowRotate": false,
                 "allowFlip": true
@@ -78,7 +78,7 @@
                 "twoHanded": true,
                 "frontArmFrame": "run.1",
                 "backArmFrame": "swim.3",
-                "weaponOffset": [0.4, 0.15],
+                "weaponOffset": [ 0.4, 0.15 ],
                 "allowRotate": true,
                 "allowFlip": true
             },
@@ -89,7 +89,7 @@
                 "twoHanded": true,
                 "frontArmFrame": "run.1",
                 "backArmFrame": "swim.3",
-                "weaponOffset": [0.3, 0.15],
+                "weaponOffset": [ 0.3, 0.15 ],
                 "allowRotate": true,
                 "allowFlip": false
             },
@@ -100,8 +100,8 @@
                 "twoHanded": true,
                 "frontArmFrame": "rotation",
                 "backArmFrame": "swim.3",
-                "weaponOffset": [0.3, 0.2],
-                "playSounds": ["lever"],
+                "weaponOffset": [ 0.3, 0.2 ],
+                "playSounds": [ "lever" ],
                 "animationStates": {
                     "firing": "reload"
                 },
@@ -111,11 +111,9 @@
         }
     },
 
-    "altAbilityType": "bayonetjab",
     "altAbility": {
         "name": "Bayonet Jab",
-        "type": "BayonetJab",
-        "scripts": ["/items/active/weapons/other/abilities/outback_bayonetjab.lua"],
+        "scripts": [ "/items/active/weapons/other/abilities/outback_bayonetjab.lua" ],
         "class": "BayonetJab",
 
         "maxHoldTime": 1.5,
@@ -133,7 +131,7 @@
 
         "damageConfig": {
             "damageSourceKind": "bow",
-            "statusEffects": [],
+            "statusEffects": [ ],
             "baseDamage": 3,
             "knockback": 20,
             "timeout": 0.15,
@@ -141,13 +139,13 @@
         },
 
         "stances": {
-            "idle":{
+            "idle": {
                 "armRotation": 0,
                 "weaponRotation": 0,
                 "twoHanded": true,
                 "frontArmFrame": "run.1",
                 "backArmFrame": "swim.3",
-                "weaponOffset": [0.4, 0.15],
+                "weaponOffset": [ 0.4, 0.15 ],
                 "allowRotate": true,
                 "allowFlip": true
             },
@@ -157,7 +155,7 @@
                 "frontArmFrame": "run.1",
                 "backArmFrame": "swim.3",
                 "twoHanded": true,
-                "weaponOffset": [1, 0],
+                "weaponOffset": [ 1, 0 ],
                 "allowRotate": true,
                 "allowFlip": true
             },
@@ -166,7 +164,7 @@
                 "armRotation": -15,
                 "weaponRotation": 15,
                 "twoHanded": true,
-                "weaponOffset": [0.0, -0.2],
+                "weaponOffset": [ 0.0, -0.2 ],
 
                 "allowRotate": false,
                 "allowFlip": false
@@ -175,87 +173,21 @@
     },
     "builder": "/items/buildscripts/buildunrandweapon.lua",
 
-  "upgradeParameters" : {
-    "inventoryIcon": "outback_huntersrifle_l6.png:cock.1",
-    "animationParts" : {
-	  "middle": "outback_huntersrifle_l6.png"
-    },
-	"animationCustom":{
-		"sounds":{
-			"fire": ["/sfx/outback/gun/shotgun1.ogg", "/sfx/outback/gun/shotgun2.ogg"]
-		}
-	},
-	"description": "I'll be back.",
-    "shortdescription" : "Judgement ^yellow;^reset;",
-	"primaryAbility": {
-        "scripts": ["/items/active/weapons/other/abilities/outback_gunfire.lua"],
-        "class": "GunFire",
-
-        "fireTime": 1.0,
-		"fireTimeLerp": 0.5,
-		"fireTimeMax": 0.5,
-        "baseDps": 5,
-        "energyUsage": 10,
-        "inaccuracy": 0.05,
-
-        "projectileCount": 5,
-        "fireType": "auto",
-
-        "projectileType": "outback_standardhuntingbullet",
-        "projectileParameters": {
-            "knockback": 20,
-			"speed": 500
+    "upgradeParameters": {
+        "inventoryIcon": "outback_huntersrifle_l6.png:cock.1",
+        "animationParts": {
+            "middle": "outback_huntersrifle_l6.png"
         },
-        "stances": {
-            "draw": {
-                "duration": 0.2,
-                "armRotation": 90,
-                "weaponRotation": 90,
-                "armAngularVelocity": -450,
-                "weaponAngularVelocity": -450,
-
-                "playSounds": ["altWindup"],
-
-                "allowRotate": false,
-                "allowFlip": true
-            },
-            "idle": {
-                "armRotation": 0,
-                "weaponRotation": 0,
-                "twoHanded": true,
-                "frontArmFrame": "run.1",
-                "backArmFrame": "swim.3",
-                "weaponOffset": [0.4, 0.15],
-                "allowRotate": true,
-                "allowFlip": true
-            },
-            "fire": {
-                "duration": 0.3,
-                "armRotation": 10,
-                "weaponRotation": 15,
-                "twoHanded": true,
-                "frontArmFrame": "run.1",
-                "backArmFrame": "swim.3",
-                "weaponOffset": [0.3, 0.15],
-                "allowRotate": true,
-                "allowFlip": false
-            },
-            "cooldown": {
-                "duration": 0.4,
-                "armRotation": -20,
-                "weaponRotation": 60,
-                "twoHanded": true,
-                "frontArmFrame": "rotation",
-                "backArmFrame": "swim.3",
-                "weaponOffset": [0.3, 0.2],
-                "playSounds": ["lever"],
-                "animationStates": {
-                    "firing": "reload"
-                },
-                "allowRotate": true,
-                "allowFlip": false
+        "animationCustom": {
+            "sounds": {
+                "fire": [ "/sfx/outback/gun/shotgun1.ogg", "/sfx/outback/gun/shotgun2.ogg" ]
             }
+        },
+        "description": "I'll be back.",
+        "shortdescription": "Judgement ^yellow;^reset;",
+        "primaryAbility": {
+            "projectileCount": 5,
+            "inaccuracy": 0.05
         }
     }
-  }
 }
