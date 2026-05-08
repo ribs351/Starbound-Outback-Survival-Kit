@@ -3,7 +3,7 @@
     "price": 600,
     "rarity": "Uncommon",
     "category": "drink",
-    "inventoryIcon": "vb.png",
+    "inventoryIcon": "outback_vb.png",
     "description": "Get that into ya, ya c*nt!",
     "shortdescription": "VB",
     "maxStack": 20,

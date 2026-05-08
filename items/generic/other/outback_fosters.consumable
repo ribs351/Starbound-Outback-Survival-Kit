@@ -3,7 +3,7 @@
   "price" : 20,
   "rarity" : "Common",
   "category" : "drink",
-  "inventoryIcon" : "fosters.png",
+  "inventoryIcon" : "outback_fosters.png",
   "description" : "Foster's is the largest-selling Australian beer brand in the world.",
   "shortdescription" : "Fosters",
   "maxStack" : 20,
