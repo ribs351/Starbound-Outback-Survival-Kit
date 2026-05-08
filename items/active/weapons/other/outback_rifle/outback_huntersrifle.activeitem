@@ -129,8 +129,6 @@
         "lungeSpeed": 60,
         "lungeUpwardBoost": 10,
 
-        "chargedDirectives" : "?fade=CCCCFFFF=0.25",
-
         "cooldownTime": 0.5,
 
         "damageConfig": {

@@ -6,8 +6,6 @@ BayonetJab = WeaponAbility:new()
 function BayonetJab:init()
   self.cooldownTimer = self.cooldownTime
 
-  self.chargedDirectives = config.getParameter("chargedDirectives", "")
-
   -- Hold phase config
   self.maxHoldTime = config.getParameter("maxHoldTime", 1.5)
   self.readyLerpTime = config.getParameter("readyLerpTime", 0.5)
@@ -90,9 +88,13 @@ end
     end
 
     if holdTimer >= self.maxHoldTime and not self.chargeReady then
-        self.chargeReady = true
-        animator.setGlobalTag("directives", self.chargedDirectives)
-        animator.playSound("charged")
+      self.chargeReady = true
+      animator.playSound("charged")
+    end
+
+    if holdTimer >= self.maxHoldTime then
+      activeItem.emote("annoyed")
+      status.addEphemeralEffect("rage", 0.1)
     end
     coroutine.yield()
   end
@@ -103,7 +105,9 @@ end
 
 function BayonetJab:swing(holdTimer)
   self.chargeReady = false
-  animator.setGlobalTag("directives", "")
+  if holdTimer >= self.maxHoldTime then
+    status.addEphemeralEffect("rage", 1.0)
+  end
   local chargeRatio = math.min(1.0, holdTimer / self.maxHoldTime)
 
   local damage = self.minDamage + (self.maxDamage - self.minDamage) * chargeRatio
