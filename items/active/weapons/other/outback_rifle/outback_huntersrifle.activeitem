@@ -264,7 +264,8 @@
         "sounds": {
             "fire": ["/sfx/outback/gun/rifle1.ogg", "/sfx/outback/gun/rifle2.ogg", "/sfx/outback/gun/rifle3.ogg", "/sfx/outback/gun/rifle4.ogg"],
             "lever": ["/sfx/outback/lever.ogg"],
-            "altWindup": ["/sfx/outback/draw.ogg"]
+            "altWindup": ["/sfx/outback/draw.ogg"],
+            "charged": [ "/sfx/melee/sword_parry.ogg" ]
         }
     },
 	"radioMessagesOnPickup" : [ "pickuphuntingrifle" ],
@@ -347,19 +348,25 @@
         }
     },
 
-    "altAbilityType": "flurry",
+    "altAbilityType": "bayonetjab",
     "altAbility": {
-        "name": "Flurry",
-        "type": "flurry",
-        "scripts": ["/items/active/weapons/other/abilities/outback_flurry.lua"],
-        "class": "Flurry",
+        "name": "Bayonet Jab",
+        "type": "BayonetJab",
+        "scripts": ["/items/active/weapons/other/abilities/outback_bayonetjab.lua"],
+        "class": "BayonetJab",
 
-        "cooldownResetTime": 0.25,
-        "maxCooldownTime": 0.5,
-        "minCooldownTime": 0.3,
-        "cooldownSwingReduction": 0.04,
+        "maxHoldTime": 1.5,
+        "readyLerpTime": 0.15,
+        "minEnergyUsage": 10,
+        "maxEnergyUsage": 40,
+        "minDamage": 3,
+        "maxDamage": 20,
+        "minFireDuration": 0.2,
+        "maxFireDuration": 1.5,
+        "lungeSpeed": 60,
+        "lungeUpwardBoost": 10,
+        "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
 
-        "energyUsage": 9.0,
         "cooldownTime": 0.5,
 
         "damageConfig": {
@@ -371,9 +378,18 @@
             "timeoutGroup": "alt"
         },
 
-        "cycleRotationOffsets": [0, 7.5, -7.5],
         "stances": {
-            "idle": {
+            "idle":{
+                "armRotation": 0,
+                "weaponRotation": 0,
+                "twoHanded": true,
+                "frontArmFrame": "run.1",
+                "backArmFrame": "swim.3",
+                "weaponOffset": [0.4, 0.15],
+                "allowRotate": true,
+                "allowFlip": true
+            },
+            "ready": {
                 "armRotation": -90,
                 "weaponRotation": 90,
                 "twoHanded": true,
