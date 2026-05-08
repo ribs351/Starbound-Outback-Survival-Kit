@@ -18,8 +18,8 @@
             "transition": "idle"
           },
           "fire3": {
-            "frames": 4,
-            "cycle": 0.19,
+            "frames": 3,
+            "cycle": 0.14,
             "mode": "transition",
             "transition": "idle"
           },
@@ -115,16 +115,6 @@
               }
             }
           }
-        }
-      },
-      "handle": {
-        "properties": {
-          "zLevel": 1,
-          "centered": true,
-          "image": "<partImage><paletteSwaps>?<directives>",
-          "offset": [ 0, 1.875 ],
-          "transformationGroups": [ "weapon" ],
-          "rotationCenter": [ 0, 0 ]
         }
       },
       "swoosh": {

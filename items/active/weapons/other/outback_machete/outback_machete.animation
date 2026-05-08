@@ -24,14 +24,14 @@
             "transition": "idle"
           },
           "fire4": {
-            "frames": 4,
-            "cycle": 0.1,
+            "frames": 3,
+            "cycle": 0.075,
             "mode": "transition",
             "transition": "idle"
           },
           "fire5": {
-            "frames": 4,
-            "cycle": 0.1,
+            "frames": 3,
+            "cycle": 0.075,
             "mode": "transition",
             "transition": "idle"
           }
