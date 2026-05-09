@@ -4,8 +4,8 @@
 	"effectConfig" : {
 		"maxPowerMultiplier" : 3,
 		"minPowerMultiplier": 0.75,
-		"maxSpeedModifier": 1.75,
-		"minSpeedModifier": 0.85
+		"maxSpeedModifier": 1.5,
+		"minSpeedModifier": 1
 	},
 	"scripts" : ["crikey.lua"],
 
