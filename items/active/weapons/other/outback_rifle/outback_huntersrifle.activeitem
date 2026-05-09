@@ -114,6 +114,7 @@
         "lungeSpeed": 60,
         "lungeUpwardBoost": 10,
 
+        "flashTimer": 0.15,
         "chargedDirectives": "?fade=CCCCFFFF=0.25",
 
         "cooldownTime": 0.5,

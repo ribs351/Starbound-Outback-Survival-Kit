@@ -7,6 +7,7 @@ function BayonetJab:init()
   self.cooldownTimer = self.cooldownTime
   self.chargeReady = false
 
+  self.flashTimer = 0
   self:reset()
 end
 
@@ -14,6 +15,13 @@ function BayonetJab:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
+
+  if self.flashTimer > 0 then
+    self.flashTimer = math.max(0, self.flashTimer - dt)
+    if self.flashTimer == 0 then
+      animator.setGlobalTag("directives", "")
+    end
+  end
 
   if self.weapon.currentAbility == nil
       and self.cooldownTimer == 0
@@ -64,8 +72,12 @@ function BayonetJab:charge()
 
     if holdTimer >= self.maxHoldTime and not self.chargeReady then
       self.chargeReady = true
-      animator.setGlobalTag("directives", self.chargedDirectives)
+      self:readyFlash()
       animator.playSound("charged")
+    end
+    if self.chargeReady then
+      activeItem.emote("annoyed")
+      status.addEphemeralEffect("rage", 0.1)
     end
     coroutine.yield()
   end
@@ -76,7 +88,6 @@ end
 
 function BayonetJab:swing(holdTimer)
   self.chargeReady = false
-  animator.setGlobalTag("directives", "")
   local chargeRatio = math.min(1.0, holdTimer / self.maxHoldTime)
 
   local damage = self.minDamage + (self.maxDamage - self.minDamage) * chargeRatio
@@ -112,6 +123,11 @@ function BayonetJab:swing(holdTimer)
 
   self.weapon:setStance(self.stances.idle)
   self.cooldownTimer = self.cooldownTime
+end
+
+function BayonetJab:readyFlash()
+  animator.setGlobalTag("directives", self.chargedDirectives or "")
+  self.flashTimer = self.flashTime or 0.25
 end
 
 function BayonetJab:reset()
