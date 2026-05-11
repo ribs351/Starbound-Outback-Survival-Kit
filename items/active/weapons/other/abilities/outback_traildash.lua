@@ -24,14 +24,29 @@ function TrailDash:update(dt, fireMode, shiftHeld)
 end
 
 function TrailDash:windup()
-  self.weapon:setStance(self.stances.windup)
+  local windupStance = self.stances.windup
+
+  local fromArmRotation = math.deg(self.weapon.relativeArmRotation)
+  local fromWeaponRotation = math.deg(self.weapon.relativeWeaponRotation)
+  local fromWeaponOffset = copy(self.weapon.weaponOffset)
+
+  local lerpTime = 0.4
+  local lerpTimer = 0
 
   status.setPersistentEffects("weaponMovementAbility", {{stat = "activeMovementAbilities", amount = 1}})
-
   animator.setParticleEmitterActive(self.weapon.elementalType.."SwordCharge", true)
   animator.playSound(self.weapon.elementalType.."TrailDashCharge")
 
-  util.wait(self.stances.windup.duration, function(dt)
+  while lerpTimer < lerpTime do
+    lerpTimer = math.min(lerpTime, lerpTimer + self.dt)
+    local t = lerpTimer / lerpTime
+    self.weapon.relativeArmRotation = util.toRadians(util.interpolateSigmoid(t, fromArmRotation, windupStance.armRotation))
+    self.weapon.relativeWeaponRotation = util.toRadians(util.interpolateSigmoid(t, fromWeaponRotation, windupStance.weaponRotation))
+    coroutine.yield()
+  end
+
+  self.weapon:setStance(windupStance)
+  util.wait(math.max(0, windupStance.duration - lerpTime), function(dt)
     mcontroller.controlModifiers({jumpingSuppressed = true})
   end)
 
