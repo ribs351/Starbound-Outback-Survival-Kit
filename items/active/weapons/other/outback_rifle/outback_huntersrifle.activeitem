@@ -103,8 +103,8 @@
         "scripts": [ "/items/active/weapons/other/abilities/outback_bayonetjab.lua" ],
         "class": "BayonetJab",
 
-        "maxHoldTime": 1.5,
-        "readyLerpTime": 0.5,
+        "maxHoldTime": 1.2,
+        "readyLerpTime": 0.4,
         "minEnergyUsage": 10,
         "maxEnergyUsage": 40,
         "minDamage": 3,
@@ -139,13 +139,23 @@
                 "allowRotate": true,
                 "allowFlip": true
             },
-            "ready": {
-                "armRotation": -90,
-                "weaponRotation": 110,
-                "frontArmFrame": "run.1",
-                "backArmFrame": "swim.3",
+            "windup":{
+                "armRotation": 30,
+                "weaponRotation": 20,
+                "frontArmFrame": "walk.5",
+                "backArmFrame": "rotation",
                 "twoHanded": true,
-                "weaponOffset": [ 1, 0 ],
+                "weaponOffset": [ -1, -0.5 ],
+                "allowRotate": true,
+                "allowFlip": true
+            },
+            "ready": {
+                "armRotation": 0,
+                "weaponRotation": 20,
+                "frontArmFrame": "walk.5",
+                "backArmFrame": "rotation",
+                "twoHanded": true,
+                "weaponOffset": [ -1, -0.5 ],
                 "allowRotate": true,
                 "allowFlip": true
             },

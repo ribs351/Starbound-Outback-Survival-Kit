@@ -132,6 +132,6 @@
         "lever": [ "/sfx/outback/lever.ogg" ],
         "jab": [ "/sfx/melee/spear_flurry.ogg" ],
         "altWindup": [ "/sfx/outback/draw.ogg" ],
-        "charged": [ "/sfx/melee/sword_parry.ogg" ]
+        "charged": [ "/sfx/melee/charge_traildash2.ogg" ]
     }
 }

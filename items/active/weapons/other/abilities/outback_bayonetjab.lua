@@ -32,21 +32,22 @@ function BayonetJab:update(dt, fireMode, shiftHeld)
 end
 
 function BayonetJab:charge()
+  local windupStance = self.stances.windup
   local readyStance = self.stances.ready
-  local idleStance = self.stances.idle
   local lerpTimer = 0
 
+  self.weapon:setStance(windupStance)
   self.weapon:updateAim()
 
   while lerpTimer < self.readyLerpTime do
     lerpTimer = math.min(self.readyLerpTime, lerpTimer + self.dt)
     local t = lerpTimer / self.readyLerpTime
 
-    self.weapon.relativeArmRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.armRotation, readyStance.armRotation))
-    self.weapon.relativeWeaponRotation = util.toRadians(util.interpolateSigmoid(t, idleStance.weaponRotation, readyStance.weaponRotation))
+    self.weapon.relativeArmRotation = util.toRadians(util.interpolateSigmoid(t, windupStance.armRotation, readyStance.armRotation))
+    self.weapon.relativeWeaponRotation = util.toRadians(util.interpolateSigmoid(t, windupStance.weaponRotation, readyStance.weaponRotation))
     self.weapon.weaponOffset = {
-      util.interpolateSigmoid(t, idleStance.weaponOffset[1], readyStance.weaponOffset[1]),
-      util.interpolateSigmoid(t, idleStance.weaponOffset[2], readyStance.weaponOffset[2])
+      util.interpolateSigmoid(t, windupStance.weaponOffset[1], readyStance.weaponOffset[1]),
+      util.interpolateSigmoid(t, windupStance.weaponOffset[2], readyStance.weaponOffset[2])
     }
     coroutine.yield()
   end

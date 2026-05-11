@@ -2,8 +2,8 @@
 	"name" : "outback_crikey",
 	"defaultDuration" : 0.2,
 	"effectConfig" : {
-		"maxPowerMultiplier" : 3,
-		"minPowerMultiplier": 0.75,
+		"maxPowerMultiplier" : 1.5,
+		"minPowerMultiplier": 1,
 		"maxSpeedModifier": 1.5,
 		"minSpeedModifier": 1
 	},
