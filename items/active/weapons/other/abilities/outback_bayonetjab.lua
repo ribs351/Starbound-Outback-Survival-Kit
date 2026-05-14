@@ -97,8 +97,8 @@ function BayonetJab:swing(holdTimer)
   local scaledDamageConfig = copy(self.damageConfig)
   scaledDamageConfig.baseDamage = damage
 
-  -- Full charge triggers lunge
-  if holdTimer >= self.maxHoldTime then
+  -- Full charge triggers lunge, doesn't work in zero gravity
+  if holdTimer >= self.maxHoldTime and math.abs(world.gravity(mcontroller.position())) > 0 then
     local lungeVector = vec2.rotate({self.lungeSpeed, 0}, self.weapon.aimAngle)
     lungeVector[1] = lungeVector[1] * mcontroller.facingDirection()
     if mcontroller.onGround() then
